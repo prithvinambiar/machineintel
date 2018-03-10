@@ -3,11 +3,17 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { RouterModule, Routes } from '@angular/router'
 
 import { AppComponent } from './app.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+
+const appRoutes : Routes = [
+  {path:'', component:AppComponent},
+  {path:'signup', component:SignupComponent}
+]
 
 const firebaseConfig = {
   apiKey: "AIzaSyBJLyQ60qZuZlLvmc7Sfzyl73RC_UIKhCk",
@@ -29,7 +35,8 @@ const firebaseConfig = {
     BrowserModule,
     NgbModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
